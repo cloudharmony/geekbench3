@@ -1,0 +1,19 @@
+Geekbench 3 Benchmark
+
+This repository contains the setup and runtime configurations for the Geekbench 
+version 3 benchmark. Geekbench is a commercial benchmark developed by Primate 
+Labs. More information about Geekbench is available on their website:
+
+http://www.primatelabs.ca/geekbench/
+
+This benchmark requires a registered version of Geekbench. Installation of this 
+benchmark requires an email address and license number. For example:
+
+install-benchmark.php my-test-server geekbench3 -p email=[email] -p license=[license]
+
+Output for this benchmark will be similar to the contents sample-parse-output
+
+
+RUNTIME PARAMETERS:
+
+* debug:    print debug messages in the output log file - default is 0
