@@ -1,0 +1,122 @@
+Geekbench 3.1.5 Pro : http://www.primatelabs.com/geekbench/
+
+System Information
+  Operating System      Linux 3.13-0.bpo.1-amd64 x86_64
+  Model                 Google Google
+  Motherboard           N/A
+  Processor                              Intel(R) Xeon(R) CPU @ 2.60GHz @ 2.60 GHz
+                        1 Processor, 8 Cores, 16 Threads
+  Processor ID          GenuineIntel Family 6 Model 45 Stepping 7
+  L1 Instruction Cache  32.0 KB x 8
+  L1 Data Cache         32.0 KB x 8
+  L2 Cache              256 KB x 8
+  L3 Cache              20.0 MB
+  Memory                59.1 GB
+  BIOS                  Google Google
+  Compiler              Clang 3.3 (tags/RELEASE_33/final)
+
+Integer
+  AES
+    single-core        2515          2.15 GB/sec
+    multi-core         9661          8.27 GB/sec
+  Twofish
+    single-core        2623         147.2 MB/sec
+    multi-core        26747          1.47 GB/sec
+  SHA1
+    single-core        2761         299.7 MB/sec
+    multi-core        24000          2.54 GB/sec
+  SHA2
+    single-core        2947         127.5 MB/sec
+    multi-core        24106          1.02 GB/sec
+  BZip2 Compress
+    single-core        2785          11.3 MB/sec
+    multi-core        27038         109.9 MB/sec
+  BZip2 Decompress
+    single-core        2564          13.9 MB/sec
+    multi-core        26233         142.2 MB/sec
+  JPEG Compress
+    single-core        3050     42.5 Mpixels/sec
+    multi-core        31130    433.7 Mpixels/sec
+  JPEG Decompress
+    single-core        4441    109.8 Mpixels/sec
+    multi-core        35236    871.0 Mpixels/sec
+  PNG Compress
+    single-core        2967     2.37 Mpixels/sec
+    multi-core        31109     24.8 Mpixels/sec
+  PNG Decompress
+    single-core        3159     36.4 Mpixels/sec
+    multi-core        30700    354.0 Mpixels/sec
+  Sobel
+    single-core        4023    146.4 Mpixels/sec
+    multi-core        32674     1.19 Gpixels/sec
+  Lua
+    single-core        3026          2.72 MB/sec
+    multi-core        24846          22.3 MB/sec
+  Dijkstra
+    single-core        2764      9.92 Mpairs/sec
+    multi-core        12393      44.5 Mpairs/sec
+
+Floating Point
+  BlackScholes
+    single-core         322      1.43 Mnodes/sec
+    multi-core         3986      17.7 Mnodes/sec
+  Mandelbrot
+    single-core        2744          2.81 Gflops
+    multi-core        30620          31.4 Gflops
+  Sharpen Filter
+    single-core        2755          2.04 Gflops
+    multi-core        24643          18.3 Gflops
+  Blur Filter
+    single-core        2189          2.09 Gflops
+    multi-core        23308          22.2 Gflops
+  SGEMM
+    single-core        3989          11.2 Gflops
+    multi-core        29015          81.3 Gflops
+  DGEMM
+    single-core        3801          5.58 Gflops
+    multi-core        28679          42.1 Gflops
+  SFFT
+    single-core        2722          2.87 Gflops
+    multi-core        22384          23.6 Gflops
+  DFFT
+    single-core        2646          2.41 Gflops
+    multi-core        23779          21.7 Gflops
+  N-Body
+    single-core        3119      1.16 Mpairs/sec
+    multi-core        25095      9.32 Mpairs/sec
+  Ray Trace
+    single-core        3908     4.61 Mpixels/sec
+    multi-core        32893     38.8 Mpixels/sec
+
+Memory
+  Stream Copy
+    single-core        1150          4.59 GB/sec
+    multi-core         2145          8.56 GB/sec
+  Stream Scale
+    single-core        1804          7.20 GB/sec
+    multi-core         2639          10.5 GB/sec
+  Stream Add
+    single-core        1900          8.59 GB/sec
+    multi-core         2586          11.7 GB/sec
+  Stream Triad
+    single-core        1902          8.36 GB/sec
+    multi-core         2682          11.8 GB/sec
+
+Benchmark Summary
+  Integer Score              3006  24452
+  Floating Point Score       2427  21921
+  Memory Score               1654   2503
+
+  Geekbench Score            2504  19049
+
+
+Uploading results to the Geekbench Browser. This could take a minute or two
+depending on the speed of your internet connection.
+
+Upload succeeded. Visit the following link and view your results online:
+
+  http://browser.primatelabs.com/geekbench3/527010
+
+Visit the following link and add this result to your profile:
+
+  http://browser.primatelabs.com/geekbench3/claim/527010?key=955613
