@@ -1,0 +1,8 @@
+# Ubuntu
+sudo apt-get -y install php5-cli
+git clone git://github.com/cloudharmony/geekbench3.git
+
+
+# CentOS
+sudo yum -y install php-cli
+git clone git://github.com/cloudharmony/geekbench3.git

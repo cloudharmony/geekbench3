@@ -214,34 +214,34 @@ class GeekbenchTest {
     $validated = validate_options($this->options, $validate);
     if (!is_array($validated)) $validated = array();
     
-    // look up directory hierarchy for Geenbench directory
+    // look up directory hierarchy for Geekbench directory
     if (!isset($this->options['geekbench_dir'])) {
       $version = ($ini = get_benchmark_ini()) ? $ini['meta-version'] : NULL;
-      print_msg(sprintf('Geenbench directory not set - looking up directory hierarchy'), isset($this->options['verbose']), __FILE__, __LINE__);
+      print_msg(sprintf('Geekbench directory not set - looking up directory hierarchy'), isset($this->options['verbose']), __FILE__, __LINE__);
       $dirs = array($this->options['output']);
       if (($pwd = trim(shell_exec('pwd'))) != $this->options['output']) $dirs[] = $pwd;
       foreach($dirs as $dir) {
         while($dir != dirname($dir)) {
           if ((is_dir($udir = sprintf('%s/dist/Geekbench-%s-Linux', $dir, $version)) || is_dir($udir = sprintf('%s/Geekbench-%s-Linux', $dir, $version))) && file_exists(sprintf('%s/geekbench_x86_64', $udir))) {
-            print_msg(sprintf('Geenbench found in directory %s', $dir), isset($this->options['verbose']), __FILE__, __LINE__);
+            print_msg(sprintf('Geekbench found in directory %s', $dir), isset($this->options['verbose']), __FILE__, __LINE__);
             $this->options['geekbench_dir'] = $udir;
             break;
           }
-          else print_msg(sprintf('Geenbench (%s) NOT found in directory %s', $udir, $dir), isset($this->options['verbose']), __FILE__, __LINE__);
+          else print_msg(sprintf('Geekbench (%s) NOT found in directory %s', $udir, $dir), isset($this->options['verbose']), __FILE__, __LINE__);
           $dir = dirname($dir);
         }
         if (isset($this->options['geekbench_dir'])) break;
       }
     }
     
-    // check if Geenbench is valid and has been compiled
+    // check if Geekbench is valid and has been compiled
     if (isset($this->options['geekbench_dir']) && is_dir($this->options['geekbench_dir'])) {
       if (!file_exists($run = sprintf('%s/geekbench_x86_64', $this->options['geekbench_dir'])) || !is_executable($run)) $validated['geekbench_dir'] = '--geekbench_dir ' . $this->options['geekbench_dir'] . ' does not contain geekbench_x86_64';
       else {
         // check if Geekbench is registered
-        $ecode = exec(sprintf('%s/geekbench_x86_%d --sysinfo 2>/dev/null | grep tryout &>/dev/null;echo $?', $this->options['geekbench_dir'], isset($this->options['x32']) ? 32 : 64));
-        if (strlen($ecode) && ($ecode*1) === 1) print_msg(sprintf('Geenbench directory %s is valid and registered', $this->options['geekbench_dir']), isset($this->options['verbose']), __FILE__, __LINE__);
-        else $validated['geekbench_dir'] = 'Geekbench has not been registered. Register using %s/geekbench_x86_64 -r [email] [registration key]';
+        $sysinfo = shell_exec(sprintf('%s/geekbench_x86_%d --sysinfo 2>/dev/null', $this->options['geekbench_dir'], isset($this->options['x32']) ? 32 : 64));
+        if (strpos($sysinfo, 'Processor')) print_msg(sprintf('Geekbench directory %s is valid and registered', $this->options['geekbench_dir']), isset($this->options['verbose']), __FILE__, __LINE__);
+        else $validated['geekbench_dir'] = sprintf('Geekbench has not been registered [ecode=%d; user=%s]. Register using %s/geekbench_x86_64 -r [email] [registration key]', $ecode, trim(shell_exec('whoami')), $this->options['geekbench_dir']);
       }
     }
     else $validated['geekbench_dir'] = isset($this->options['geekbench_dir']) ? '--geekbench_dir ' . $this->options['geekbench_dir'] . ' is not valid' : '--geekbench_dir is required';
