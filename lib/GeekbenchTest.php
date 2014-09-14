@@ -30,12 +30,12 @@ class GeekbenchTest {
   const GEEKBENCH_TEST_OPTIONS_FILE_NAME = '.options';
   
   /**
-   * name of the file geekbench output is written to
+   * name of the file geekbench stdout is written to
    */
   const GEEKBENCH_TEST_FILE_NAME = 'geekbench.out';
   
   /**
-   * name of the file geekbench output is written to
+   * name of the file geekbench stderror is written to
    */
   const GEEKBENCH_TEST_ERR_FILE = 'geekbench.err';
   
