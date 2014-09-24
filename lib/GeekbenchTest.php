@@ -122,7 +122,7 @@ class GeekbenchTest {
           'meta_compute_service' => 'Not Specified',
           'meta_cpu' => $sysInfo['cpu'],
           'meta_instance_id' => 'Not Specified',
-          'meta_memory' => $sysInfo['memory_gb'] . ' GB',
+          'meta_memory' => $sysInfo['memory_gb'] > 0 ? $sysInfo['memory_gb'] . ' GB' : $sysInfo['memory_mb'] . ' MB',
           'meta_os' => $sysInfo['os_info'],
           'meta_provider' => 'Not Specified',
           'meta_storage_config' => 'Not Specified',
