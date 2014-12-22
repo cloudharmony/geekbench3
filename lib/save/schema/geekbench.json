@@ -1,6 +1,7 @@
 [
   {"name": "benchmark_version", "type": "char(8)"},
   {"name": "claim_url", "type": "char(255)"},
+  {"name": "collectd_rrd", "type": "char(255)"},
   {"name": "floating_point_multicore_rate", "type": "float unsigned"},
   {"name": "floating_point_multicore_score", "type": "int unsigned"},
   {"name": "floating_point_score", "type": "int unsigned"},

@@ -119,6 +119,7 @@ class GeekbenchTest {
         // default run argument values
         $sysInfo = get_sys_info();
         $defaults = array(
+          'collectd_rrd_dir' => '/var/lib/collectd/rrd',
           'meta_compute_service' => 'Not Specified',
           'meta_cpu' => $sysInfo['cpu'],
           'meta_instance_id' => 'Not Specified',
@@ -129,6 +130,8 @@ class GeekbenchTest {
           'output' => trim(shell_exec('pwd'))
         );
         $opts = array(
+          'collectd_rrd',
+          'collectd_rrd_dir:',
           'geekbench_dir:',
           'meta_compute_service:',
           'meta_compute_service_id:',
@@ -172,6 +175,7 @@ class GeekbenchTest {
    * @return boolean
    */
   public function test() {
+    $rrdStarted = isset($this->options['collectd_rrd']) ? ch_collectd_rrd_start($this->options['collectd_rrd_dir'], isset($this->options['verbose'])) : FALSE;
     $success = FALSE;
     $this->getRunOptions();
     $this->options['test_started'] = date('Y-m-d H:i:s');
@@ -192,6 +196,7 @@ class GeekbenchTest {
     else if (file_exists($ofile) && $ecode === 0) {
       $success = TRUE;
       print_msg(sprintf('Geekbench test finished - results written to %s', $ofile), isset($this->options['verbose']), __FILE__, __LINE__);
+      if ($rrdStarted) ch_collectd_rrd_stop($this->options['collectd_rrd_dir'], $this->options['output'], isset($this->options['verbose']));
       $this->endTest();
     }
     else print_msg(sprintf('Geekbench failed to run - exit code %d', $ecode), isset($this->options['verbose']), __FILE__, __LINE__, TRUE);
@@ -245,6 +250,14 @@ class GeekbenchTest {
       }
     }
     else $validated['geekbench_dir'] = isset($this->options['geekbench_dir']) ? '--geekbench_dir ' . $this->options['geekbench_dir'] . ' is not valid' : '--geekbench_dir is required';
+    
+    // validate collectd rrd options
+    if (isset($this->options['collectd_rrd'])) {
+      if (!ch_check_sudo()) $validated['collectd_rrd'] = 'sudo privilege is required to use this option';
+      else if (!is_dir($this->options['collectd_rrd_dir'])) $validated['collectd_rrd_dir'] = sprintf('The directory %s does not exist', $this->options['collectd_rrd_dir']);
+      else if ((shell_exec('ps aux | grep collectd | wc -l')*1 < 2)) $validated['collectd_rrd'] = 'collectd is not running';
+      else if ((shell_exec(sprintf('find %s -maxdepth 1 -type d 2>/dev/null | wc -l', $this->options['collectd_rrd_dir']))*1 < 2)) $validated['collectd_rrd_dir'] = sprintf('The directory %s is empty', $this->options['collectd_rrd_dir']);
+    }
     
     return $validated;
   }

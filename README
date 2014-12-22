@@ -20,6 +20,17 @@ the results (see save.sh). Geekbench should be installed and registered before
 running this benchmark. Review the 'geekbench_dir' parameter comments below
 for instructions.
 
+* collectd_rrd              If set, collectd rrd stats will be captured from 
+                            --collectd_rrd_dir. To do so, when testing starts,
+                            existing directories in --collectd_rrd_dir will 
+                            be renamed to .bak, and upon test completion 
+                            any directories not ending in .bak will be zipped
+                            and saved along with other test artifacts (as 
+                            collectd-rrd.zip). User MUST have sudo privileges
+                            to use this option
+                            
+* collectd_rrd_dir          Location where collectd rrd files are stored - 
+                            default is /var/lib/collectd/rrd
 
 * geekbench_dir             Directory where Geekbench is installed. If not 
                             specified, the benchmark run script will look up 
@@ -96,9 +107,13 @@ This benchmark has the following dependencies:
 
   php-cli     Test automation scripts (/usr/bin/php)
   
+  zip         Used to compress test artifacts
+  
   
 TEST ARTIFACTS
 This benchmark generates the following artifacts:
+
+collectd-rrd.zip   collectd RRD files (see --collectd_rrd)
 
 geekbench.html     HTML formatted geekbench report
 
@@ -116,6 +131,7 @@ removed using the save.sh --remove parameter
 
 benchmark_version: [benchmark version]
 claim_url: [Geekbench browser claim URL - to associate results to your account]
+collectd_rrd: [URL to zip file containing collectd rrd files]
 floating_point_multicore_rate: multithreaded floating point rate]
 floating_point_multicore_score: [multithreaded floating point score]
 floating_point_score: [single threaded integer score]
