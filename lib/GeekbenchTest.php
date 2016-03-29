@@ -133,6 +133,7 @@ class GeekbenchTest {
           'collectd_rrd',
           'collectd_rrd_dir:',
           'geekbench_dir:',
+          'meta_burst:',
           'meta_compute_service:',
           'meta_compute_service_id:',
           'meta_cpu:',
